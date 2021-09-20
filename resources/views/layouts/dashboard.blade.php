@@ -11,7 +11,7 @@
 
     @stack('prepend-style')
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-        <link href="style/main.css" rel="stylesheet" />
+        <link href="{{ url('/style/main.css')}}" rel="stylesheet" />
     @stack('addon-style')
 </head>
 
@@ -22,11 +22,11 @@
             <!-- start content sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="images/dashboard-store-logo.svg" class="my-4">
+                    <img src="{{ url('/images/dashboard-store-logo.svg')}}" class="my-4">
                 </div>
                 <!-- start item sidebar -->
                 <div class="list-group list-group-flush">
-                    <a href="dashboard.html" class="list-group-item list-group-item-action active">
+                    <a href="dashboard.html" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
                     <a href="dashboard-products.html" class="list-group-item list-group-item-action">
@@ -65,24 +65,24 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link" id="navbarDropdown" role="button"
                                         data-toggle="dropdown">
-                                        <img src="images/icon-user.png" alt=""
+                                        <img src="{{ url('/images/icon-user.png')}}" alt=""
                                             class="rounded-circle mr-2 profile-picture">
                                         Hi, Ferri
                                     </a>
                                     <div class="dropdown-menu">
-                                        <a href="dashboard.html" class="dropdown-item">
+                                        <a href="" class="dropdown-item">
                                             Dashboard
                                         </a>
-                                        <a href="dashboard-account.html" class="dropdown-item">
+                                        <a href="" class="dropdown-item">
                                             Pengaturan
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a href="index.html" class="dropdown-item">Keluar</a>
+                                        <a href="" class="dropdown-item">Keluar</a>
                                     </div>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link d-inline-block mt-2">
-                                        <img src="images/icon-cart-filled.svg" alt="cart">
+                                        <img src="{{ url('/images/icon-cart-filled.svg')}}" alt="cart">
                                         <div class="cart-badge">100</div>
                                     </a>
                                 </li>
@@ -110,8 +110,8 @@
 
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
-        <script src="libraries/bootstrap_v4/js/jquery-3.4.1.min.js"></script>
-        <script src="libraries/bootstrap_v4/js/bootstrap.js"></script>
+        <script src="{{ url('/libraries/bootstrap_v4/js/jquery-3.4.1.min.js')}}"></script>
+        <script src="{{ url('/libraries/bootstrap_v4/js/bootstrap.js')}}"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
         <script>
             AOS.init();

@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-1">
-                                        <img src="images/dashboard-icon-product-1.png">
+                                        <img src="{{ url('/images/dashboard-icon-product-1.png')}}">
                                     </div>
                                     <div class="col-md-4">
                                         Sirup Marjan
@@ -64,7 +64,7 @@
                                         12 Oktober 2021
                                     </div>
                                     <div class="col-md-1 d-none d-md-block">
-                                        <img src="images/dashboard-arrow-right.svg" alt="">
+                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-1">
-                                        <img src="images/dashboard-icon-product-2.png">
+                                        <img src="{{ url('/images/dashboard-icon-product-2.png')}}">
                                     </div>
                                     <div class="col-md-4">
                                         LeBrone X
@@ -85,7 +85,7 @@
                                         12 Oktober 2021
                                     </div>
                                     <div class="col-md-1 d-none d-md-block">
-                                        <img src="images/dashboard-arrow-right.svg" alt="">
+                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-1">
-                                        <img src="images/dashboard-icon-product-3.png">
+                                        <img src="{{ url('/images/dashboard-icon-product-3.png')}}">
                                     </div>
                                     <div class="col-md-4">
                                         Soffa Ikea
@@ -106,7 +106,7 @@
                                         12 Oktober 2021
                                     </div>
                                     <div class="col-md-1 d-none d-md-block">
-                                        <img src="images/dashboard-arrow-right.svg" alt="">
+                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
                                     </div>
                                 </div>
                             </div>
