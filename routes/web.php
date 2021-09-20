@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/debug-sentry', function () {
     throw new Exception('My first Sentry error!');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
