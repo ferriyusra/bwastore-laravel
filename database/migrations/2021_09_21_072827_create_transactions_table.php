@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('insurance_price');
             $table->integer('shipping_price');
             $table->integer('total_price');
-            $table->string('transaction_status'); //unpaid/pending/shipping/success/failed
+            $table->string('transaction_status'); //unpaid/pending/success/failed
             $table->string('resi');
 
             $table->softDeletes();
