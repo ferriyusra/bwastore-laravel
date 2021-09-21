@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
 
     <title>@yield('title')</title>
 
@@ -26,22 +24,22 @@
                 </div>
                 <!-- start item sidebar -->
                 <div class="list-group list-group-flush">
-                    <a href="dashboard.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Dashboard
                     </a>
-                    <a href="dashboard-products.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Produk Saya
                     </a>
-                    <a href="dashboard-transactions.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Transaksi
                     </a>
-                    <a href="dashboard-setting.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Pengaturan Toko
                     </a>
-                    <a href="dashboard-account.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Akun Saya
                     </a>
-                    <a href="index.html" class="list-group-item list-group-item-action">
+                    <a href="" class="list-group-item list-group-item-action">
                         Keluar
                     </a>
                 </div>
