@@ -21,7 +21,8 @@ Route::get('/success', 'CartController@success')->name('success');
 
 Route::get('/register/success', 'Auth\RegisterController@success')->name('register-success');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard', 'DashboardController@index')
+        ->name('dashboard');
 Route::get('/dashboard/products', 'DashboardProductController@index')
         ->name('dashboard-product');
 Route::get('/dashboard/products/create', 'DashboardProductController@create')
@@ -33,5 +34,10 @@ Route::get('/dashboard/transactions', 'DashboardTransactionController@index')
 ->name('dashboard-transaction');
 Route::get('/dashboard/transactions/{id}', 'DashboardTransactionController@details')
 ->name('dashboard-transaction-details');
+
+Route::get('/dashboard/settings-store', 'DashboardSettingController@store')
+        ->name('dashboard-settings-store');
+Route::get('/dashboard/settings-account', 'DashboardSettingController@account')
+        ->name('dashboard-settings-account');
 
 Auth::routes();
