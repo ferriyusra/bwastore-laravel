@@ -40,4 +40,11 @@ Route::get('/dashboard/settings-store', 'DashboardSettingController@store')
 Route::get('/dashboard/settings-account', 'DashboardSettingController@account')
         ->name('dashboard-settings-account');
 
+        // ->middleware(['auth', 'admin'])
+Route::prefix('admin')
+        ->namespace('Admin')
+        ->group(function(){
+                Route::get('/', 'DashboardController@index')->name('admin-dashboard');
+        });
+
 Auth::routes();
