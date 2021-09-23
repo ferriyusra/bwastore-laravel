@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpKernel\HttpCache\Store;
+use App\Http\Requests\Admin\CategoryRequest;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -63,7 +64,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.category.create');
     }
 
     /**
@@ -72,9 +73,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        $data['photo'] = $request->file('photo')->store('assets/category', 'public');
+
+        Category::create($data);
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -96,7 +103,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+       $item = Category::findOrFail($id);
+
+       return view('pages.admin.category.edit', [
+           'item' => $item,
+       ]);
     }
 
     /**
@@ -108,8 +119,37 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+  
+        $item = Category::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:100',
+        ]);
+
+        if($request->photo){
+
+            $data['photo'] = $request->file('photo')->store(
+                'assets/category', 'public'
+            );
+    
+            \Storage::disk('local')->delete('public/' . $item->photo);
+            
+    
+            $item->update($data);
+    
+    
+            return redirect()->route('category.index');
+        }
+
+
+        $item->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+        ]);
+
+        return redirect()->route('category.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -119,6 +159,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Category::findOrFail($id);
+        \Storage::disk('local')->delete('public/' . $item->photo);
+        $item->delete();
+
+        return redirect()->route('category.index');
     }
 }

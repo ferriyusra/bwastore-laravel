@@ -94,6 +94,7 @@
     <!-- Bootstrap core JavaScript -->
     @stack('prepend-script')
         <script src="{{ url('/libraries/bootstrap_v4/js/jquery-3.4.1.min.js')}}"></script>
+        <script src="{{ url('/libraries/bootstrap_v4/js/bootstrap.bundle.min.js')}}"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.2/datatables.min.js"></script>
         <script src="{{ url('/libraries/bootstrap_v4/js/bootstrap.js')}}"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
