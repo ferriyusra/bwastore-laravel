@@ -81,36 +81,36 @@
           </div>
         </div>
         <div class="row">
-          @php
-            $incrementProduct = 0;
-          @endphp
-         @forelse ($products as $product)
-         <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementProduct += 100}}">
-          <a href="{{route('product-detail', $product->slug)}}" class="component-products d-block">
-            <div class="products-thumbnail">
-              <div class="products-image"
-                  style="
-                  @if ($product->galleries->count())
-                      background-image: url('{{ Storage::url($product->galleries->first()->photos) }}')
-                  @else
-                      background-color: #eee;
-                  @endif
-                  ">
+            @php
+              $incrementProduct = 0;
+            @endphp
+          @forelse ($products as $product)
+          <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementProduct += 100}}">
+            <a href="{{route('product-detail', $product->slug)}}" class="component-products d-block">
+              <div class="products-thumbnail">
+                <div class="products-image"
+                    style="
+                    @if ($product->galleries->count())
+                        background-image: url('{{ Storage::url($product->galleries->first()->photos) }}')
+                    @else
+                        background-color: #eee;
+                    @endif
+                    ">
+                </div>
               </div>
-            </div>
-            <div class="products-text text-capitalize">
-              {{$product->name}}
-            </div>
-            <div class="products-price">
-              Rp {{number_format($product->price, 0, '.', '.')}}
-            </div>
-          </a>
-        </div>
-         @empty
-         <div class="col-12 text-center py-2" data-aos="fade-up" data-aos-delay="100">
-          No Prodcuts in here.
-        </div>
-         @endforelse
+              <div class="products-text text-capitalize">
+                {{$product->name}}
+              </div>
+              <div class="products-price">
+                Rp {{number_format($product->price, 0, '.', '.')}}
+              </div>
+            </a>
+          </div>
+          @empty
+          <div class="col-12 text-center py-2" data-aos="fade-up" data-aos-delay="100">
+            No Prodcuts in here.
+          </div>
+          @endforelse
         </div>
       </div>
     </section>
