@@ -22,7 +22,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Pelanggan</div>
-                                <div class="dashboard-card-subtitle">15.000</div>
+                                <div class="dashboard-card-subtitle">{{ $customer }}</div>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Pendapatan</div>
-                                <div class="dashboard-card-subtitle">Rp 15.000.000</div>
+                                <div class="dashboard-card-subtitle">Rp {{ $revenue }}</div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Transaksi</div>
-                                <div class="dashboard-card-subtitle"> 15.000.000</div>
+                                <div class="dashboard-card-subtitle"> {{ $transaction }}</div>
                             </div>
                         </div>
                     </div>
