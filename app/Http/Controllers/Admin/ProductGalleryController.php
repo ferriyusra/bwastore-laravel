@@ -29,24 +29,12 @@ class ProductGalleryController extends Controller
                 ->addColumn('action', function($item){
                     return '
                         <div class="btn-group">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle mr-1 mb-1"
-                                    type="button"
-                                    data-toggle="dropdown">
-                                    Aksi
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a href="' . route('product-gallery.edit', $item->id) . '" class="dropdown-item">
-                                        Sunting
-                                    </a>
                                     <form action="' . route('product-gallery.destroy', $item->id) . '" method="POST">
                                     ' . method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger">
                                         Hapus
                                     </button>
                                     </form>
-                                </div>
-                            </div>
                         </div>
                     ';
                 })
@@ -133,9 +121,10 @@ class ProductGalleryController extends Controller
      */
     public function destroy($id)
     {
-        $item = Product::findOrFail($id);
+        $item = ProductGallery::findOrFail($id);
+        \Storage::disk('local')->delete('public/' . $item->photos);
         $item->delete();
 
-        return redirect()->route('product.index');
+        return redirect()->route('product-gallery.index');
     }
 }
