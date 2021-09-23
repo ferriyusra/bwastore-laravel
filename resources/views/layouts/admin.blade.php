@@ -37,7 +37,7 @@
                     <a href="" class="list-group-item list-group-item-action">
                         Data Transaksi
                     </a>
-                    <a href="" class="list-group-item list-group-item-action">
+                    <a href="{{ route('user.index')}}"class="list-group-item list-group-item-action {{ (request()->is('admin/user*')) ? 'active' : ''}}">
                         Data Pengguna
                     </a>
                     <a href="" class="list-group-item list-group-item-action">
