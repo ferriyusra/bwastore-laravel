@@ -122,7 +122,7 @@ class ProductGalleryController extends Controller
     public function destroy($id)
     {
         $item = ProductGallery::findOrFail($id);
-        \Storage::disk('local')->delete('public/' . $item->photos);
+        // \Storage::disk('local')->delete('public/' . $item->photos);
         $item->delete();
 
         return redirect()->route('product-gallery.index');

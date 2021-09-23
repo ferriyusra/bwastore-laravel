@@ -45,7 +45,7 @@
                                     <div class="form-group">
                                         <label>Pemilik Produk</label>
                                         <select name="users_id" class="form-control">
-                                            <option value="{{$item->users_id}}" selected>{{$item->user->name}}</option>
+                                            <option value="{{$item->users_id}}" selected>Tidak diubah : {{$item->user->name}}</option>
                                             @foreach ($users as $user)
                                                 <option value="{{ $user->id }}">{{$user->name}}</option>
                                             @endforeach
@@ -56,7 +56,7 @@
                                     <div class="form-group">
                                         <label>Kategori Produk</label>
                                         <select name="categories_id" class="form-control">
-                                            <option value="{{$item->categories_id}}" selected>{{$item->category->name}}</option>
+                                            <option value="{{$item->categories_id}}" selected>Tidak diubah : {{$item->category->name}}</option>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{$category->name}}</option>
                                             @endforeach
