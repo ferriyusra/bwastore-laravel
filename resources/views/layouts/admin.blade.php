@@ -31,7 +31,7 @@
                     <a href="" class="list-group-item list-group-item-action">
                         Data Produk
                     </a>
-                    <a href="" class="list-group-item list-group-item-action">
+                    <a href="{{ route('category.index')}}" class="list-group-item list-group-item-action {{ (request()->is('admin/category*')) ? 'active' : ''}}">
                         Data Kategori produk
                     </a>
                     <a href="" class="list-group-item list-group-item-action">
