@@ -67,7 +67,7 @@
                     ">
                 </div>
               </div>
-              <div class="products-text text-capitalize">
+              <div class="products-text">
                 {{$product->name}}
               </div>
               <div class="products-price">

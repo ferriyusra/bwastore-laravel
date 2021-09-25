@@ -38,7 +38,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nama Produk</label>
-                                        <input type="text" name="name" class="form-control" value={{$item->name}}>
+                                        <input type="text" name="name" class="form-control" value="{{$item->name}}"">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -66,7 +66,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Harga Produk</label>
-                                        <input type="number" name="price" class="form-control" value={{$item->price}}>
+                                        <input type="number" name="price" class="form-control" value="{{$item->price}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
