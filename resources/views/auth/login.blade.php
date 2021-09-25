@@ -16,21 +16,33 @@
                         <br>
                         menjadi lebih mudah
                     </h2>
-                    <form action="" class="mt-3">
+                    <form method="POST" action="{{ route('login') }}" class="mt-3">
+                        @csrf
                         <div class="form-group">
                             <label>Alamat Email</label>
-                            <input type="email" class="form-control w-75">
+                            <input id="email" type="email" class="form-control w-75 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Kata Sandi</label>
-                            <input type="password" class="form-control w-75">
+                            <input id="password" type="password" class="form-control w-75 @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                        <button class="btn btn-success btn-block w-75 mt-4">
+                        <button type="submit" class="btn btn-success btn-block w-75 mt-4">
                             Masuk Akun
                         </button>
-                        <button class="btn btn-signup btn-block w-75 mt-4">
+                        <a href="{{ route('register')}}" class="btn btn-signup btn-block w-75 mt-4">
                             Registrasi Akun
-                        </button>
+                        </a>
                     </form>
                 </div>
             </div>
