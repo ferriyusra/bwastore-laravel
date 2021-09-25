@@ -103,7 +103,7 @@
                             id="store_name" 
                             type="text"
                             v-model="store_name"
-                            class="form-control is-invalid @error('password') @enderror"
+                            class="form-control @error('store_name') is-invalid @enderror"
                             name="store_name"
                             autocomplete
                             autofocus>
