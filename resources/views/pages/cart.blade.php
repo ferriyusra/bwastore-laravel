@@ -43,60 +43,38 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="width: 25%;">
-                                    <img src="/images/product-cart-1.jpg" alt="" class="cart-image" />
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Sofa Ikea</div>
-                                    <div class="product-subtitle">Penjual Toko Ferri Yusra</div>
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Rp 10.000.000</div>
-                                    <div class="product-subtitle">IDR</div>
-                                </td>
-                                <td style="width: 20%;">
-                                    <a href="#" class="btn btn-remove-cart">
+                         @forelse ($carts as $cart)
+                         <tr>
+                            <td style="width: 25%;">
+                            @if ($cart->product->galleries)
+                                <img src="{{ Storage::url($cart->product->galleries->first()->photos) }}" alt="" class="cart-image" />
+                            @endif
+                            </td>
+                            <td style="width: 35%;">
+                                <div class="product-title text-capitalize">{{ $cart->product->name }}</div>
+                                <div class="product-subtitle">Penjual {{ $cart->product->user->store_name }}</div>
+                            </td>
+                            <td style="width: 35%;">
+                                <div class="product-title">Rp {{number_format($cart->product->price, 0, '.', '.')}}</div>
+                                <div class="product-subtitle">IDR</div>
+                            </td>
+                            <td style="width: 20%;">
+                                <form action="{{ route('cart-delete', $cart->id )}}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-remove-cart">
                                         Hapus
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25%;">
-                                    <img src="/images/product-cart-2.jpg" alt="" class="cart-image" />
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Sofa Ikea</div>
-                                    <div class="product-subtitle">Penjual Toko Ferri Yusra</div>
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Rp 10.000.000</div>
-                                    <div class="product-subtitle">IDR</div>
-                                </td>
-                                <td style="width: 20%;">
-                                    <a href="#" class="btn btn-remove-cart">
-                                        Hapus
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 25%;">
-                                    <img src="/images/product-cart-3.jpg" alt="" class="cart-image" />
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Sofa Ikea</div>
-                                    <div class="product-subtitle">Penjual Toko Ferri Yusra</div>
-                                </td>
-                                <td style="width: 35%;">
-                                    <div class="product-title">Rp 10.000.000</div>
-                                    <div class="product-subtitle">IDR</div>
-                                </td>
-                                <td style="width: 20%;">
-                                    <a href="#" class="btn btn-remove-cart">
-                                        Hapus
-                                    </a>
-                                </td>
-                            </tr>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                          <td colspan=7 class="text-center">
+                            Tidak ada produk di keranjang | <a href="{{ route('home')}}" class="btn btn-success">Lanjutkan belanja</a>
+                          </td>
+                        </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>
