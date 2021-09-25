@@ -16,25 +16,23 @@
   
 
 </head>
+  <body>
+  
+      {{-- start Navbar --}}
+      @include('includes.navbar')
+      {{-- end Navbar --}}
 
-<body>
- 
-    {{-- start Navbar --}}
-    @include('includes.navbar')
-    {{-- end Navbar --}}
+      {{-- start page content --}}
+      @yield('content')
+      {{-- end page content --}}
 
-    {{-- start page content --}}
-    @yield('content')
-    {{-- end page content --}}
+      {{-- start footer --}}
+      @include('includes.footer')
+      {{-- end footer --}}
 
-    {{-- start footer --}}
-    @include('includes.footer')
-    {{-- end footer --}}
-
-    {{-- script --}}
-    @stack('prepend-script')
-    @include('includes.script')
-    @stack('addon-script')
-</body>
-
+      {{-- script --}}
+      @stack('prepend-script')
+      @include('includes.script')
+      @stack('addon-script')
+  </body>
 </html>
