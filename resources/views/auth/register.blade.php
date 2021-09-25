@@ -16,14 +16,14 @@
                         @csrf
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input id="name" 
-                            type="text" 
-                            class="form-control
-                            @error('name') is-invalid @enderror" 
-                            name="name"
-                            value="{{ old('name') }}" 
+                            <input 
                             v-model="name"
-                            autocomplete="name"
+                            id="name" 
+                            type="text" 
+                            class="form-control @error('name') is-invalid @enderror" 
+                            name="name" 
+                            value="{{ old('name') }}" 
+                            autocomplete="name" 
                             autofocus>
 
                             @error('name')
@@ -38,8 +38,7 @@
                             v-model="email"
                             id="email"
                             type="email"
-                            class="form-control
-                            @error('email') is-invalid @enderror"
+                            class="form-control @error('email') is-invalid @enderror"
                             name="email" value="{{ old('email') }}"
                             autocomplete="email">
 
@@ -68,11 +67,11 @@
                             <input
                             id="password-confirm" 
                             type="password"
-                            class="form-control @error('password_confirm') is-invalid @enderror"
-                            name="password_confirm"
+                            class="form-control @error('password_confirmation') is-invalid @enderror"
+                            name="password_confirmation"
                             autocomplete="new-password">
 
-                            @error('password_confirm')
+                            @error('password_confirmation')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -104,8 +103,7 @@
                             id="store_name" 
                             type="text"
                             v-model="store_name"
-                            class="form-control 
-                            @error('password') is-invalid @enderror"
+                            class="form-control is-invalid @error('password') @enderror"
                             name="store_name"
                             autocomplete
                             autofocus>
@@ -118,11 +116,11 @@
                         </div>
                         <div class="form-group" v-if="is_store_open">
                             <label>Kategori</label>
-                            <select name="category" class="form-control">
+                            <select name="categroies_id" class="form-control">
                                 <option value="" disabled>Kategori Toko</option>
-                                {{-- @foreach ($categories as $category)
+                                @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
                         <button type="submit" class="btn btn-success btn-block mt-4">
@@ -158,8 +156,8 @@
             // );
         },
         data: {
-            name: "ferri yusra aa",
-            email: "feri@gmail.com",
+            name: "",
+            email: "",
             password: "",
             is_store_open: true,
             store_name: ""
