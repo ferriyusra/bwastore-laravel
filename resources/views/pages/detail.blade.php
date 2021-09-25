@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-lg-2 mr-0" data-aos="zoom-in">
                         @auth
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('product-add-to-cart', $product->id)}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <button type="submit" class="btn btn-success px-4 text-white btn-block mb-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">

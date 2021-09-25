@@ -19,6 +19,7 @@ Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/{id}', 'CategoryController@detail')->name('categories-detail');
 
 Route::get('/details/{id}', 'DetailController@details')->name('product-detail');
+Route::post('/details/{id}', 'DetailController@add')->name('product-add-to-cart');
 Route::get('/cart', 'CartController@index')->name('cart');
 Route::get('/success', 'CartController@success')->name('success');
 
