@@ -12,18 +12,71 @@
                         <br>
                         dengan cara terbaru
                     </h2>
-                    <form class="mt-3">
+                    <form method="POST" action="{{ route('register') }}" class="mt-3">
+                        @csrf
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input type="text" class="form-control is-valid" v-model="name" autofocus>
+                            <input id="name" 
+                            type="text" 
+                            class="form-control
+                            @error('name') is-invalid @enderror" 
+                            name="name"
+                            value="{{ old('name') }}" 
+                            v-model="name"
+                            autocomplete="name"
+                            autofocus>
+
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Alamat Email</label>
-                            <input type="email" class="form-control is-invalid" v-model="email">
+                            <input
+                            v-model="email"
+                            id="email"
+                            type="email"
+                            class="form-control
+                            @error('email') is-invalid @enderror"
+                            name="email" value="{{ old('email') }}"
+                            autocomplete="email">
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Kata Sandi</label>
-                            <input type="password" class="form-control">
+                            <input
+                            id="password" 
+                            type="password"
+                            class="form-control @error('password') is-invalid @enderror"
+                            name="password"
+                            autocomplete="new-password">
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        <div class="form-group">
+                            <label>Konfirmasi Kata Sandi</label>
+                            <input
+                            id="password-confirm" 
+                            type="password"
+                            class="form-control @error('password_confirm') is-invalid @enderror"
+                            name="password_confirm"
+                            autocomplete="new-password">
+
+                            @error('password_confirm')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label>Toko</label>
@@ -47,20 +100,37 @@
                         </div>
                         <div class="form-group" v-if="is_store_open">
                             <label>Nama Toko</label>
-                            <input type="text" class="form-control">
+                            <input
+                            id="store_name" 
+                            type="text"
+                            v-model="store_name"
+                            class="form-control 
+                            @error('password') is-invalid @enderror"
+                            name="store_name"
+                            autocomplete
+                            autofocus>
+
+                            @error('store_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group" v-if="is_store_open">
                             <label>Kategori</label>
                             <select name="category" class="form-control">
                                 <option value="" disabled>Kategori Toko</option>
+                                {{-- @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach --}}
                             </select>
                         </div>
-                        <button class="btn btn-success btn-block mt-4">
+                        <button type="submit" class="btn btn-success btn-block mt-4">
                             Registrasi Sekarang
                         </button>
-                        <button class="btn btn-signup btn-block mt-4">
+                        <a href="{{ route('login')}}" class="btn btn-signup btn-block mt-4">
                             Masuk Akun
-                        </button>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -68,81 +138,6 @@
     </div>
 </div>
 <!-- end section login -->
-
-
-<div class="container" style="display: none">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
 
 @push('addon-script')
@@ -154,13 +149,13 @@
         el: "#register",
         mounted() {
             AOS.init();
-            this.$toasted.error(
-                "Maaf, email yang dimasukkan sudah terdaftar didalam sistem kami.", {
-                position: "top-center",
-                className: "rounded",
-                duration: "1000"
-            }
-            );
+            // this.$toasted.error(
+            //     "Maaf, email yang dimasukkan sudah terdaftar didalam sistem kami.", {
+            //     position: "top-center",
+            //     className: "rounded",
+            //     duration: "1000"
+            // }
+            // );
         },
         data: {
             name: "ferri yusra aa",
