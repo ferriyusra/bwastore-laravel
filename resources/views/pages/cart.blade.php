@@ -72,7 +72,7 @@
                             </td>
                         </tr>
                         @php
-                            $totalPrice += $cart->product->price + 45000;
+                            $totalPrice += $cart->product->price;
                         @endphp
                         @empty
                         <tr>
@@ -149,19 +149,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="zip_code">Kode Pos</label>
-                            <input type="text" class="form-control" id="zip_code" name="zip_code" value="40512" />
+                            <input type="text" class="form-control" id="zip_code" name="zip_code" value="" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="country">Negara</label>
-                            <input type="text" class="form-control" id="country" name="country" value="Indonesia" />
+                            <input type="text" class="form-control" id="country" name="country" value="" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="phone_number">No Handphone</label>
-                            <input type="text" class="form-control" id="phone_number" name="phone_number" value="+628 2020 11111" />
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" value="" />
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                 </div>
                 <div class="row" data-aos="fade-up" data-aos-delay="200">
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp 10.000</div>
+                        <div class="product-title">Rp 5.000</div>
                         <div class="product-subtitle">Pajak Negara</div>
                     </div>
                     <div class="col-4 col-md-3">
@@ -185,17 +185,24 @@
                         <div class="product-subtitle">Asuransi Produk</div>
                     </div>
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp 30.000</div>
+                        <div class="product-title">Rp 20.000</div>
                         <div class="product-subtitle">Kirim ke Jakarta</div>
                     </div>
                     <div class="col-4 col-md-2">
                         <div class="product-title text-success">
-                            Rp {{number_format($totalPrice ?? 0)}}
+                            @php
+                                $grandTotalPrice = $totalPrice;
+                            @endphp
+                            @if ($grandTotalPrice)
+                                Rp {{number_format($grandTotalPrice + 30000, 0, '.', '.')}}
+                            @else
+                                Rp {{number_format(0)}}
+                            @endif
                         </div>
                         <div class="product-subtitle">Total</div>
                     </div>
                     <div class="col-8 col-md-3">
-                        <a href="/uccess.html" class="btn btn-success mt-4 px-4 btn-block">
+                        <a href="" class="btn btn-success mt-4 px-4 btn-block">
                             Bayar Sekarang
                         </a>
                     </div>
