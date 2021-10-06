@@ -74,6 +74,9 @@
                         @php
                             $totalPrice += $cart->product->price;
                         @endphp
+                        @php
+                            $grandTotalPrice = $totalPrice;
+                        @endphp
                         @empty
                         <tr>
                           <td colspan=7 class="text-center">
@@ -94,7 +97,9 @@
                 </div>
             </div>
 
-            <form action="" method="post" id="locations">
+            <form action="{{ route('checkout')}}" method="post" id="locations" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="total_price" value="{{ $grandTotalPrice }}">
                 <!-- start section shiping information -->
                 <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
                     <div class="col-md-6">
@@ -190,9 +195,6 @@
                     </div>
                     <div class="col-4 col-md-2">
                         <div class="product-title text-success">
-                            @php
-                                $grandTotalPrice = $totalPrice;
-                            @endphp
                             @if ($grandTotalPrice)
                                 Rp {{number_format($grandTotalPrice + 30000, 0, '.', '.')}}
                             @else
@@ -202,9 +204,9 @@
                         <div class="product-subtitle">Total</div>
                     </div>
                     <div class="col-8 col-md-3">
-                        <a href="" class="btn btn-success mt-4 px-4 btn-block">
+                        <button type="submit" class="btn btn-success mt-4 px-4 btn-block">
                             Bayar Sekarang
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <!-- end section payment information -->
