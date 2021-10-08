@@ -22,7 +22,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Pelanggan</div>
-                                <div class="dashboard-card-subtitle">15.000</div>
+                                <div class="dashboard-card-subtitle">{{ number_format($customer) }}</div>
                             </div>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Pendapatan</div>
-                                <div class="dashboard-card-subtitle">Rp 15.000.000</div>
+                                <div class="dashboard-card-subtitle">Rp {{ number_format($revenue) }}</div>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <div class="card mb-2">
                             <div class="card-body">
                                 <div class="dashboard-card-title">Transaksi</div>
-                                <div class="dashboard-card-subtitle"> 15.000.000</div>
+                                <div class="dashboard-card-subtitle"> {{ number_format($transaction_count) }}</div>
                             </div>
                         </div>
                     </div>
@@ -48,69 +48,35 @@
                         <h5 class="mb-3">
                             Transaksi Terakhir
                         </h5>
-                        <a href="dashboard-transactions-details.html" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('/images/dashboard-icon-product-1.png')}}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        Sirup Marjan
-                                    </div>
-                                    <div class="col-md-3">
-                                        Ferri Yusra
-                                    </div>
-                                    <div class="col-md-3">
-                                        12 Oktober 2021
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
-                                    </div>
+                       @forelse ($transaction_data as $transaction)
+                       <a href={{ route('dashboard-transaction-details', $transaction->id) }} class="card card-list d-block">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img src="{{ Storage::url($transaction->product->galleries->first()->photos ?? '') }}" class="w-75">
+                                </div>
+                                <div class="col-md-4">
+                                    {{$transaction->product->name ?? ''}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{$transaction->transaction->user->name ?? ''}}
+                                </div>
+                                <div class="col-md-3">
+                                    {{$transaction->created_at  ?? ''}}
+                                </div>
+                                <div class="col-md-1 d-none d-md-block">
+                                    <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
                                 </div>
                             </div>
+                        </div>
                         </a>
-                        <a href="dashboard-transactions-details.html" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('/images/dashboard-icon-product-2.png')}}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        LeBrone X
-                                    </div>
-                                    <div class="col-md-3">
-                                        Ferri Usro
-                                    </div>
-                                    <div class="col-md-3">
-                                        12 Oktober 2021
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="dashboard-transactions-details.html" class="card card-list d-block">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-1">
-                                        <img src="{{ url('/images/dashboard-icon-product-3.png')}}">
-                                    </div>
-                                    <div class="col-md-4">
-                                        Soffa Ikea
-                                    </div>
-                                    <div class="col-md-3">
-                                        Usro Usri
-                                    </div>
-                                    <div class="col-md-3">
-                                        12 Oktober 2021
-                                    </div>
-                                    <div class="col-md-1 d-none d-md-block">
-                                        <img src="{{ url('/images/dashboard-arrow-right.svg')}}" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+                       @empty
+                           <div class="row">
+                               <div class="col-12">
+                                   <p>tidak ada data</p>
+                               </div>
+                           </div>
+                       @endforelse
                     </div>
                 </div>
             </div>

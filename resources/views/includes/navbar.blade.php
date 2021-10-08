@@ -82,7 +82,18 @@
                   <a href="" class="nav-link">Hi, {{Auth::user()->name}} </a>
               </li>
               <li class="nav-item">
-                  <a href="" class="nav-link d-inline-block">Cart</a>
+                  {{-- <a href="" class="nav-link d-inline-block">Cart</a> --}}
+                  <a href="{{ route('cart')}}" class="nav-link d-inline-block">
+                    @php
+                        $carts = \App\Cart::where('users_id', Auth::user()->id)->count();
+                    @endphp
+                    @if ($carts > 0)
+                      <img src="/images/icon-cart-filled.svg" alt="cart">
+                      <div class="cart-badge">{{ $carts }}</div>
+                    @else
+                      <img src="/images/icon-cart-empty.svg" alt="cart">
+                    @endif
+                  </a>
               </li>
           </ul>
         @endauth
