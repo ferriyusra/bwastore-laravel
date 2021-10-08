@@ -31,7 +31,7 @@ class CheckoutController extends Controller
         $transaction = Transaction::create([
             'users_id' => Auth::user()->id,
             'insurance_price' => 0,
-            'shipping_price' => 20000,
+            'shipping_price' => 0,
             'total_price' => (int) $request->total_price,
             'transaction_status' => 'PENDING',
             'code_transaction' => $code_transaction,
@@ -50,6 +50,9 @@ class CheckoutController extends Controller
         }
 
         // return dd($transaction);
+
+        // delete cart data after checkout
+        Cart::where('users_id', Auth::user()->id)->delete();
 
         // konfigurasi midtrans
         // Set your Merchant Server Key

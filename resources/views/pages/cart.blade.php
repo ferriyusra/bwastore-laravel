@@ -74,9 +74,6 @@
                         @php
                             $totalPrice += $cart->product->price;
                         @endphp
-                        @php
-                            $grandTotalPrice = $totalPrice;
-                        @endphp
                         @empty
                         <tr>
                           <td colspan=7 class="text-center">
@@ -99,7 +96,7 @@
 
             <form action="{{ route('checkout')}}" method="post" id="locations" enctype="multipart/form-data">
                 @csrf
-                <input type="hidden" name="total_price" value="{{ $grandTotalPrice }}">
+                <input type="hidden" name="total_price" value="{{ $totalPrice }}">
                 <!-- start section shiping information -->
                 <div class="row mb-2" data-aos="fade-up" data-aos-delay="200">
                     <div class="col-md-6">
@@ -182,25 +179,19 @@
                 </div>
                 <div class="row" data-aos="fade-up" data-aos-delay="200">
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp 5.000</div>
+                        <div class="product-title">Rp 0</div>
                         <div class="product-subtitle">Pajak Negara</div>
                     </div>
                     <div class="col-4 col-md-3">
-                        <div class="product-title">Rp 5.000</div>
+                        <div class="product-title">Rp 0</div>
                         <div class="product-subtitle">Asuransi Produk</div>
                     </div>
                     <div class="col-4 col-md-2">
-                        <div class="product-title">Rp 20.000</div>
+                        <div class="product-title">Rp 0</div>
                         <div class="product-subtitle">Kirim ke Jakarta</div>
                     </div>
                     <div class="col-4 col-md-2">
-                        <div class="product-title text-success">
-                            @if ($grandTotalPrice)
-                                Rp {{number_format($grandTotalPrice + 30000, 0, '.', '.')}}
-                            @else
-                                Rp {{number_format(0)}}
-                            @endif
-                        </div>
+                        <div class="product-title text-success">Rp {{ number_format($totalPrice ?? 0) }}</div>
                         <div class="product-subtitle">Total</div>
                     </div>
                     <div class="col-8 col-md-3">
