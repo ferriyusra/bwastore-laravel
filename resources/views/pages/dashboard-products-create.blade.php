@@ -20,27 +20,40 @@
                 <div class="dashboard-content">
                     <div class="row">
                         <div class="col-12">
-                            <form action="">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+                            <form action="{{ route('dashboard-product-store')}}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="users_id" value={{ Auth::user()->id }}>
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Nama Produk</label>
-                                                    <input type="text" class="form-control">
+                                                    <input type="text" class="form-control" name="name">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Harga</label>
-                                                    <input type="number" class="form-control">
+                                                    <input type="number" class="form-control" name="price">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Kategori Produk</label>
-                                                    <select name="category" class="form-control">
-                                                        <option value="" disabled>Kategori Produk</option>
+                                                    <select name="categories_id" class="form-control">
+                                                        @foreach ($categories as $category)
+                                                            <option value="{{ $category->id }}">{{$category->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -48,13 +61,13 @@
                                                 <div class="form-group">
                                                     <label>Deskripsi Produk</label>
                                                     <textarea name="description"
-                                                        class="form-control"></textarea>
+                                                        class="form-control" id="editor"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>Thumbnail Produk</label>
-                                                    <input type="file" class="form-control">
+                                                    <input type="file" class="form-control" name="photo">
                                                     <p class="text-muted">
                                                         Kamu dapat memilih lebih dari satu file
                                                     </p>
