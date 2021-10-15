@@ -37,10 +37,10 @@
                     class="list-group-item list-group-item-action {{ (request()->is('dashboard/transactions*')) ? 'active' : ''}}">
                         Transaksi
                     </a>
-                    <a href="{{ route('dashboard-settings-store')}}" class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings*')) ? 'active' : ''}}">
+                    <a href="{{ route('dashboard-settings-store')}}" class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings-store*')) ? 'active' : ''}}">
                         Pengaturan Toko
                     </a>
-                    <a href="{{ route('dashboard-settings-account')}}" class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : ''}}">
+                    <a href="{{ route('dashboard-settings-account')}}" class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings-account*')) ? 'active' : ''}}">
                         Akun Saya
                     </a>
                     <a href="{{ route('logout') }}"
